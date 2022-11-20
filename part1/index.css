@@ -118,6 +118,11 @@ body {
   background-color: #0a4aaa;
 }
 
+.order_demo:active {
+  background-color: #6296e4;
+  color: #29374E;
+}
+
 .banner_options {
   width: 100%;
   max-width: 1100px;
@@ -146,9 +151,6 @@ body {
   cursor: pointer
 }
 
-.banner_option:hover {
-  background-color: #f6faff;
-}
 
 .banner_option p {
   width: 135px;
@@ -172,6 +174,15 @@ body {
   background-color: #EFF9FF;
   left: 20px;
   top: -10px;
+}
+
+.banner_option:hover .icon {
+  background-color: #0962E8;
+}
+
+.banner_option:hover .icon i {
+  color: #EFF9FF;
+
 }
 
 .banner_option .icon i {
@@ -236,8 +247,10 @@ body {
   min-width: 340px;
   height: 215px;
   padding: 25px 20px 0 16px;
-  cursor: pointer
+  cursor: pointer;
+  transition: ease-in-out 0.25s;
 }
+
 
 .platform h2 {
   font-style: normal;
@@ -269,13 +282,21 @@ body {
   background-position: cover;
   background-image: -webkit-image-set(url("./assets/chart.png") 1x, url("./assets/chart.png") 2x, url("./assets/chart.png") 3x);
   background-image: image-set(url("./assets/chart.png") 1x, url("./assets/chart.png") 2x, url("./assets/chart.png") 3x);
+  transition: ease-in-out 0.25s;
+}
+
+.platform:hover .chart_image {
+  box-shadow: 8px -8px 16px rgba(0, 0, 0, 0.06);
+}
+
+.platform:hover .chartpie_image {
   box-shadow: 8px -8px 16px rgba(0, 0, 0, 0.06);
 }
 
 .promotion {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   width: 100%;
   padding: 0 16px;
@@ -326,6 +347,10 @@ body {
   width: 100%;
 }
 
+.promotion .banner_option:nth-of-type(2) i {
+  padding-right: 3px;
+}
+
 @media (min-width: 415px) {
   .banner_container {
     background-position: right top;
@@ -335,8 +360,8 @@ body {
 @media (min-width: 590px) {
   .banner_container {
     background-size: auto 470px;
-
   }
+
 
 }
 
@@ -356,6 +381,7 @@ body {
 
   .order_demo {
     width: 199px;
+    margin-left: 0;
   }
 
   .banner_options {
@@ -379,7 +405,7 @@ body {
   .promotion .order_demo {
     width: 199px;
     margin-top: 37px;
-    margin-left: 0;
+
   }
 
   .promotion_description {
@@ -432,6 +458,15 @@ body {
     height: 140px;
     box-shadow: none;
   }
+
+
+
+  .promotion .banner_option:hover .icon {
+    background-color: #d5eeff;
+  }
+
+
+
 
   .promotion {
     margin-top: 114px;
