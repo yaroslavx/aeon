@@ -41,6 +41,8 @@ body {
   background-image: image-set(url("./assets/backImg.png") 1x, url("./assets/backImg@2x.png") 2x, url("./assets/backImg@3x.png") 3x);
 }
 
+
+
 .lang_buttons {
   position: absolute;
   right: 21px;
@@ -59,11 +61,12 @@ body {
   background-color: transparent;
   border: none;
   border-radius: 100%;
-  padding: 4px;
+  padding: 6px 7px;
   cursor: pointer;
 }
 
-.ru_lang {
+.ru_lang:hover,
+.en_lang:hover {
   background-color: #FFFFFF;
   color: #0962E8;
 }
@@ -111,6 +114,10 @@ body {
   cursor: pointer;
 }
 
+.order_demo:hover {
+  background-color: #0a4aaa;
+}
+
 .banner_options {
   width: 100%;
   max-width: 1100px;
@@ -139,6 +146,10 @@ body {
   cursor: pointer
 }
 
+.banner_option:hover {
+  background-color: #f6faff;
+}
+
 .banner_option p {
   width: 135px;
   font-weight: 400;
@@ -148,6 +159,7 @@ body {
 }
 
 .banner_option .icon {
+  font-family: 'icons';
   display: flex;
   align-items: center;
   justify-content: center;
@@ -163,6 +175,7 @@ body {
 }
 
 .banner_option .icon i {
+  font-family: 'icons';
   font-size: 19px;
   color: #0962E8;
   display: flex;
@@ -394,14 +407,14 @@ body {
     top: 30px;
   }
 
-  .banner_option .icon {
+  .promotion .banner_option .icon {
     padding-right: 15px;
     padding-bottom: 11px;
     left: 20px;
     top: -10px;
   }
 
-  .banner_option .icon i {
+  .promotion .banner_option .icon i {
     font-size: 35px;
     color: #0962E8;
     display: flex;
