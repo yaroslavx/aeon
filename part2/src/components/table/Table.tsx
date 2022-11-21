@@ -1,9 +1,14 @@
 import React from 'react'
+import LeftSide from '../leftSide/LeftSide'
+import RightSide from '../rightSide/RightSide'
 import { CustomTable } from './Table.styles'
 
 const Table = () => {
     return (
-        <CustomTable>Table</CustomTable>
+        <CustomTable>
+            <LeftSide />
+            <RightSide />
+        </CustomTable>
     )
 }
 
