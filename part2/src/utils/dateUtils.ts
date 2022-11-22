@@ -1,16 +1,16 @@
 import moment from 'moment'
 
+// Parse date from DD.MM.YYYY to Date format
 export const parseDate = (date: string) => {
   if (!date.length) return
   const dateArr = date.split('.')
   return new Date(Date.parse(dateArr.reverse().join('-')))
 }
 
+// If project start date isn't monday, then get monday date on project start date's week
 export const getFirstDate = (firstDate?: Date) => {
   let newDate = firstDate
   if (newDate) {
-    // if (newDate.getDay() === 1) return newDate
-
     while (newDate.getDay() !== 1) {
       newDate = new Date(newDate?.getTime() - 86400000)
     }
@@ -18,8 +18,8 @@ export const getFirstDate = (firstDate?: Date) => {
   }
 }
 
+// Get every monday and sunday dates on project period
 export const getEveryMondayAndSunday = (period: string[]) => {
-  console.log(period)
   const everyMondayAndSunday = []
   const start = moment('2022-08-29'),
     end = moment('2022-12-31')

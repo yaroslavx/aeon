@@ -1,9 +1,38 @@
 import styled from 'styled-components'
 
-export const CustomLeftSide = styled.div`
-  flex: 4;
+type LeftSide = {
+  width: number
+}
+
+export const CustomLeftSide = styled.div<LeftSide>`
+  /* flex: 4; */
+  position: relative;
   border-right: 1px solid rgba(38, 40, 66, 0.12);
-  width: fit-content;
+  /* max-width: fit-content; */
+  min-width: 170px;
+  max-width: 80vw;
+  width: ${(props) => `${props.width}px`};
+
+  .resize {
+    position: absolute;
+    right: 0px;
+    height: 100%;
+    border: none;
+    width: 5px;
+    background-color: rgba(38, 40, 66, 0.05);
+    cursor: col-resize;
+    transition: 0.3s;
+
+    &:active {
+      width: 5px;
+      background-color: rgb(52, 127, 235);
+    }
+
+    &:hover {
+      width: 5px;
+      background-color: rgb(52, 127, 235);
+    }
+  }
 
   .leftside_header {
     height: 48px;
@@ -15,6 +44,7 @@ export const CustomLeftSide = styled.div`
     line-height: 18px;
     color: #6d6e85;
     border-bottom: 1px solid rgba(38, 40, 66, 0.12);
+    overflow: hidden;
   }
   .add_bar {
     display: flex;
@@ -28,6 +58,7 @@ export const CustomLeftSide = styled.div`
     line-height: 18px;
     color: #262842;
     cursor: pointer;
+    overflow: hidden;
 
     .icon {
       display: flex;
@@ -41,5 +72,8 @@ export const CustomLeftSide = styled.div`
       border-radius: 4px;
       margin-right: 8px;
     }
+  }
+  .tasks {
+    overflow: hidden;
   }
 `

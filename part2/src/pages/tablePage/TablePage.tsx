@@ -1,5 +1,4 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import { FC, useEffect } from 'react'
 import ExportButton from '../../components/exportButton/ExportButton';
 import Table from '../../components/table/Table'
 import { useCalendarData } from '../../hooks/queryHooks';
@@ -7,19 +6,21 @@ import { setCalendar } from '../../redux/calendar/calendarSlice';
 import { useAppDispatch } from '../../redux/store';
 import { CustomTablePage } from './TablePage.styled'
 
-const TablePage = () => {
+const TablePage: FC = () => {
     const dispatch = useAppDispatch()
+
+    // Fetch data from api
     const { isLoading, data: calendar, isError, error, isFetching, refetch } =
         useCalendarData();
 
+    // Send data from api to redux store
     useEffect(() => {
         if (calendar) {
             dispatch(setCalendar({ project: calendar.project, period: calendar.period, chart: calendar.chart }))
-
         }
     }, [calendar])
 
-
+    // Export file
     const dowloadFile = () => {
         fetch('http://82.202.204.94/tmp/test.php', {
             method: 'GET',

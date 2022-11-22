@@ -1,8 +1,8 @@
-import React from 'react'
+import { FC } from 'react'
 import { CustomExportButton } from './ExportButton.styles'
 import { HiDownload } from 'react-icons/hi'
 
-const ExportButton = () => {
+const ExportButton: FC = () => {
     return (
         <CustomExportButton>
             <div className='icon'><HiDownload /></div>

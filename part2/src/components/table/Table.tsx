@@ -1,9 +1,9 @@
-import React from 'react'
+import { FC } from 'react'
 import LeftSide from '../leftSide/LeftSide'
 import RightSide from '../rightSide/RightSide'
 import { CustomTable } from './Table.styles'
 
-const Table = () => {
+const Table: FC = () => {
     return (
         <CustomTable>
             <LeftSide />

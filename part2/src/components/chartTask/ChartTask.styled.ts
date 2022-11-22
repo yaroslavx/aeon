@@ -32,6 +32,7 @@ export const ChartBar = styled.div<ChartBar>`
   border: 1px solid ${(props) => props.border};
   background-color: ${(props) => props.background};
   height: 24px;
+  margin-right: 3px;
   width: ${(props) => `${props.width && 22 * props.width}px`};
   border-radius: 4px;
   z-index: -1;

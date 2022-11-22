@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { selectCalendar } from '../../redux/calendar/calendarSelector'
 import { Chart } from '../../redux/calendar/calendarTypes'
 import { CustomLeftSide } from './LeftSide.styles'
 import Task from '../task/Task'
 import { IoAddCircle } from 'react-icons/io5'
-import { useCalendarData } from '../../hooks/queryHooks'
 import { selectChartBar } from '../../redux/chart/chartBarSelector'
 import { useAppDispatch } from '../../redux/store'
 import { setOpened } from '../../redux/chart/chartBarSlice'
@@ -17,16 +16,15 @@ export type TaskType = {
     firstDate?: number
 }
 
-const LeftSide = () => {
+const LeftSide: FC = () => {
+    const dispatch = useAppDispatch()
     const { chart } = useSelector(selectCalendar)
-    const [tasks, setTasks] = useState<TaskType[]>([])
-    // const [opened, setOpened] = useState(0)
-
     const { opened } = useSelector(selectChartBar)
 
-    const dispatch = useAppDispatch()
+    const [tasks, setTasks] = useState<TaskType[]>([])
+    const [size, setSize] = useState({ x: 370 });
 
-
+    // Recursively parse the tasks tree
     const getNestedObject = (level: number, sub?: Chart[]) => {
         if (!sub) return
         for (let task of sub) {
@@ -35,6 +33,7 @@ const LeftSide = () => {
         }
     }
 
+    // Create object of tasks and their levels
     useEffect(() => {
         setTasks([{ level: 0, chart }])
         getNestedObject(1, chart.sub)
@@ -46,11 +45,30 @@ const LeftSide = () => {
             return
         }
         dispatch(setOpened({ opened: level }))
-
     }
 
+
+    // Left side resizer
+    const handler: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+        const startSize = size;
+        const startPosition = { x: e.pageX };
+
+        function onMouseMove(mouseMoveEvent: MouseEvent) {
+            setSize(currentSize => ({
+                x: startSize.x - startPosition.x + mouseMoveEvent.pageX,
+            }));
+        }
+        function onMouseUp() {
+            document.body.removeEventListener("mousemove", onMouseMove);
+        }
+
+        document.body.addEventListener("mousemove", onMouseMove);
+        document.body.addEventListener("mouseup", onMouseUp, { once: true });
+    };
+
     return (
-        <CustomLeftSide>
+        <CustomLeftSide width={size.x}>
+            <button className='resize' onMouseDown={handler}><div className='handle'></div></button>
             <div className='leftside_header'>
                 Work item
             </div>
@@ -59,7 +77,7 @@ const LeftSide = () => {
                     <div className='icon' ><IoAddCircle /></div>
                     Add item
                 </div>
-                <div>
+                <div className='tasks'>
                     {tasks.map(task => <div key={task.chart.id} onClick={() => openTask(task.level)}><Task level={task.level} chart={task.chart} opened={opened} /></div>)}
                 </div>
             </>

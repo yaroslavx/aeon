@@ -13,6 +13,7 @@ type Icon = {
 
 export const CustomTask = styled.div<Task>`
   display: flex;
+  min-width: fit-content;
   white-space: nowrap;
   padding-right: 55px;
   align-items: center;
