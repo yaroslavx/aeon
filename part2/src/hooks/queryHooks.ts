@@ -7,6 +7,6 @@ const fetchCalendar = async (): Promise<Calendar> => {
   return response.data
 }
 
-export const useRandomMansData = () => {
+export const useCalendarData = () => {
   return useQuery(['calendar'], fetchCalendar)
 }

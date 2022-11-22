@@ -5,6 +5,7 @@ export const CustomTablePage = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
+  min-width: 530px;
 
   .header {
     display: flex;
@@ -18,6 +19,7 @@ export const CustomTablePage = styled.div`
       font-size: 24px;
       line-height: 28px;
       color: #262842;
+      white-space: nowrap;
     }
   }
 `

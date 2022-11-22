@@ -8,6 +8,7 @@ const Table = () => {
         <CustomTable>
             <LeftSide />
             <RightSide />
+            <div className='shadow' />
         </CustomTable>
     )
 }

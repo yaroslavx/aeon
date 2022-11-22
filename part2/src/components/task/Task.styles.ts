@@ -3,6 +3,7 @@ import styled from 'styled-components'
 type Task = {
   isOpened: boolean
   level: number
+  clickable: boolean
 }
 
 type Icon = {
@@ -12,6 +13,8 @@ type Icon = {
 
 export const CustomTask = styled.div<Task>`
   display: flex;
+  white-space: nowrap;
+  padding-right: 55px;
   align-items: center;
   height: 40px;
   padding-left: ${(props) => `${23 * (props.level + 1)}px`};
@@ -22,7 +25,7 @@ export const CustomTask = styled.div<Task>`
   line-height: 18px;
   color: #262842;
   gap: 5px;
-  cursor: pointer;
+  cursor: ${(props) => (props.clickable ? 'pointer' : 'auto')};
   display: ${(props) => props.isOpened && 'none'};
 
   .open_button {

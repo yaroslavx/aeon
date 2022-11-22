@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch } from 'react-redux'
 import calendarReducer from './calendar/calendarSlice'
+import chartBarReducer from './chart/chartBarSlice'
 
 const store = configureStore({
   reducer: {
     calendar: calendarReducer,
+    chartBar: chartBarReducer,
   },
 })
 

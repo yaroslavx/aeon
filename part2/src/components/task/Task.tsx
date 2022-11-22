@@ -3,7 +3,7 @@ import { Chart } from '../../redux/calendar/calendarTypes'
 import { TaskType } from '../leftSide/LeftSide'
 import { CustomIcon, CustomTask } from './Task.styles'
 import { IoLayers, IoBulb, IoBookmark } from 'react-icons/io5'
-import { FiTarget, FiChevronDown } from 'react-icons/fi'
+import { FiTarget, FiChevronDown, FiChevronRight } from 'react-icons/fi'
 import { BsFillLightningFill } from 'react-icons/bs'
 
 
@@ -16,12 +16,13 @@ const colorPallete = [
 ]
 
 
-const Task: React.FC<TaskType> = ({ level, chart, opened }) => {
+const Task: React.FC<TaskType> = ({ level, chart, opened = 0 }) => {
 
 
 
-    return <CustomTask isOpened={!!(opened !== undefined && level > opened)} level={level}>
-        {level < 4 && <button className='open_button'><FiChevronDown /></button>}
+    return <CustomTask isOpened={!!(opened !== undefined && level > opened)} level={level} clickable={level < 4}>
+
+        {(level < 4 && opened > level) ? <button className='open_button'><FiChevronDown /></button> : level < 4 && <button className='open_button'><FiChevronRight /></button>}
         <CustomIcon color={colorPallete[level].main} background={colorPallete[level].background} >
             {(() => {
                 switch (level) {

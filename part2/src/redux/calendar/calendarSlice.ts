@@ -17,18 +17,17 @@ const calendarSlice = createSlice({
   name: 'calendar',
   initialState,
   reducers: {
-    setProject: (state, action: PayloadAction<{ project: string }>) => {
+    setCalendar: (
+      state,
+      action: PayloadAction<{ project: string; period: string; chart: Chart }>
+    ) => {
       state.project = action.payload.project
-    },
-    setPeriod: (state, action: PayloadAction<{ period: string }>) => {
       state.period = action.payload.period
-    },
-    setChart: (state, action: PayloadAction<{ chart: Chart }>) => {
       state.chart = action.payload.chart
     },
   },
 })
 
-export const { setProject, setPeriod, setChart } = calendarSlice.actions
+export const { setCalendar } = calendarSlice.actions
 
 export default calendarSlice.reducer
