@@ -72,11 +72,11 @@ const LeftSide: FC = () => {
             <div className='leftside_header'>
                 Work item
             </div>
+            <div className='add_bar'>
+                <div className='icon' ><IoAddCircle /></div>
+                Add item
+            </div>
             {tasks.length > 1 && <>
-                <div className='add_bar'>
-                    <div className='icon' ><IoAddCircle /></div>
-                    Add item
-                </div>
                 <div className='tasks'>
                     {tasks.map(task => <div key={task.chart.id} onClick={() => openTask(task.level)}><Task level={task.level} chart={task.chart} opened={opened} /></div>)}
                 </div>

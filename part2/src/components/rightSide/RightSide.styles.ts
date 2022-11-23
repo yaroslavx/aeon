@@ -42,11 +42,11 @@ export const CustomRightSide = styled.div`
         text-align: center;
         color: #262842;
         background-color: #f7f8fc;
-
         width: 22px;
         height: 24px;
         border-right: 1px solid rgba(38, 40, 66, 0.12);
         border-bottom: 1px solid rgba(38, 40, 66, 0.12);
+        cursor: pointer;
 
         &:nth-last-child(-n + 2) {
           color: #a9a9b8;
