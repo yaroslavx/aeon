@@ -43,6 +43,7 @@ export const CustomLeftSide = styled.div<LeftSide>`
     font-size: 14px;
     line-height: 18px;
     color: #6d6e85;
+    border-radius: 10px 0 0 0;
     border-bottom: 1px solid rgba(38, 40, 66, 0.12);
     overflow: hidden;
   }
